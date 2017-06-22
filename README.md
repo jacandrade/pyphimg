@@ -4,7 +4,7 @@
 ## pyphimg is a PlaceHolder Image generator written in python, adapted from the 'lightweight django' book.
 
 
-###This project was developed in a virtualenv with python3.4
+######This project was developed in a virtualenv with python3.4
 
 To run the app, clone or donwload this repo,
 install the requirements:
