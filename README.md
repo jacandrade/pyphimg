@@ -10,11 +10,15 @@ To run the app:
 - clone or donwload this repo,
 - install the requirements:
 
-`pip install -r requirements.txt`
+```shell
+pip install -r requirements.txt
+```
 
 - and run the server:
 
-`python pyphimg.py runserver`
+```shell
+python pyphimg.py runserver
+```
 
 **Then visit localhost:8000 for usage instructions**
 
