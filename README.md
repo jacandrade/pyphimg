@@ -16,6 +16,6 @@ To run the app:
 
 `python pyphimg.py runserver`
 
-**Then visit localhost:8000 for usage**
+**Then visit localhost:8000 for usage instructions**
 
 
