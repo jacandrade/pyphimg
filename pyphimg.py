@@ -2,12 +2,15 @@ import hashlib
 import os
 import sys
 
+from io import BytesIO
+from PIL import Image, ImageDraw
+
 from django.conf import settings
 
 DEBUG = os.environ.get('DEBUG', 'on') == 'on'
 SECRET_KEY = os.environ.get('SECRET_KEY', 'jo^+_9izu97@vn)n5qtgvj3g=&zapc70s$#&tlx$$^4*qt0%7f')
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
-BASE_DIR = os.path.dirname(__file__)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 settings.configure(
         DEBUG=DEBUG,
@@ -22,10 +25,20 @@ settings.configure(
         INSTALLED_APPS=(
             'django.contrib.staticfiles',
         ),
-        TEMPLATE_DIRS=(
-            os.path.join(BASE_DIR, 'templates'),
-        ),
-        STATICFILES=(
+        TEMPLATES = [
+            {
+                'BACKEND': 'django.template.backends.django.DjangoTemplates',
+                'DIRS': [
+                    os.path.join(BASE_DIR, 'templates'),
+                ],
+                'APP_DIRS': True,
+                'OPTIONS': {
+                    'context_processors': [
+                    ],
+                },
+            },
+        ],
+        STATICFILES_DIRS=(
             os.path.join(BASE_DIR, 'static'),
         ),
         STATIC_URL='/static/',
@@ -41,8 +54,6 @@ from django.views.decorators.http import etag
 from django.core.wsgi import get_wsgi_application
 from django.http import HttpResponse, HttpResponseBadRequest
 
-from io import BytesIO
-from PIL import Image, ImageDraw
 
 class ImageForm(forms.Form):
     """Form ro validate requested images"""
